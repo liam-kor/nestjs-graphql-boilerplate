@@ -1,10 +1,19 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Post } from 'src/modules/post/models/post.model';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity()
 @ObjectType()
 export class User {
-  @Field((type) => Int)
+  @PrimaryGeneratedColumn()
+  @Field((type) => ID)
   id: number;
 
-  @Field({ nullable: true })
-  name?: string;
+  @Column({ length: 20 })
+  @Field()
+  name: string;
+
+  @Field((type) => [Post])
+  @OneToMany((type) => Post, (post) => post.author)
+  posts?: Post[];
 }

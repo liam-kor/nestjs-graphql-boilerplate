@@ -1,10 +1,13 @@
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { User } from './models/user.model';
 
 export class UserService {
-  findOneById(id: number): User {
-    return {
-      id: 1,
-      name: 'user1',
-    };
+  constructor(
+    @InjectRepository(User)
+    private readonly users: Repository<User>,
+  ) {}
+  async findOneById(id: number): Promise<User> {
+    return await this.users.findOne(id);
   }
 }
