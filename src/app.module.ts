@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core/dist/plugin/landingPage/default';
+import { PubSub } from 'graphql-subscriptions';
 import { PostModule } from './modules/post/post.module';
 import { UserModule } from './modules/user/user.module';
 
@@ -18,6 +19,10 @@ import { UserModule } from './modules/user/user.module';
       autoSchemaFile: true,
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      subscriptions: {
+        'graphql-ws': true,
+        'subscriptions-transport-ws': true,
+      },
     }),
     UserModule,
     PostModule,

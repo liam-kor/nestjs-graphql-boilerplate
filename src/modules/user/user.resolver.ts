@@ -18,6 +18,11 @@ export class UserResolver {
     private postService: PostService,
   ) {}
 
+  @Query(() => [User])
+  async users(): Promise<User[]> {
+    return await this.userService.getUsers();
+  }
+
   @Query(() => User)
   async user(@Args('id', { type: () => Int }) id: number) {
     return await this.userService.findOneById(id);
@@ -25,6 +30,7 @@ export class UserResolver {
 
   @ResolveField()
   async posts(@Parent() user: User): Promise<Post[]> {
+    console.log('getPosts');
     return await this.postService.findByUser(user);
   }
 }
