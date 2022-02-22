@@ -17,13 +17,13 @@ NestJS GraphQL API boilerplate for typical project
 
 - [x] Database ([typeorm](https://www.npmjs.com/package/typeorm)).
 - [x] Config Service ([@nestjs/config](https://www.npmjs.com/package/@nestjs/config)).
-- [] Seeding ([typeorm-seeding](https://www.npmjs.com/package/typeorm-seeding)).
-- [] Sign in and sign up via email.
-- [] Social sign in (Apple, Facebook, Google, Twitter).
-- [] Admin and User roles.
-- [] E2E and units tests.
-- [] Docker.
-- [] CI (Github Actions).
+- [ ] Seeding ([typeorm-seeding](https://www.npmjs.com/package/typeorm-seeding)).
+- [ ] Sign in and sign up via email.
+- [ ] Social sign in (Apple, Facebook, Google, Twitter).
+- [ ] Admin and User roles.
+- [ ] E2E and units tests.
+- [ ] Docker.
+- [ ] CI (Github Actions).
 
 ## Quick run
 
