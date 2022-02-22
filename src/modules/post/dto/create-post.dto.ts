@@ -1,13 +1,5 @@
-import { Field, InputType } from '@nestjs/graphql';
-import { IsString } from 'class-validator';
+import { InputType, OmitType } from '@nestjs/graphql';
+import { Post } from '../models/post.model';
 
 @InputType()
-export class CreatePostInput {
-  @Field()
-  @IsString()
-  title: string;
-
-  @Field()
-  @IsString()
-  content: string;
-}
+export class CreatePostInput extends OmitType(Post, ['id', 'author']) {}

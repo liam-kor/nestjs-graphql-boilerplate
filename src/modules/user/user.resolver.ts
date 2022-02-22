@@ -11,26 +11,25 @@ import { PostService } from '../post/post.service';
 import { User } from './models/user.model';
 import { UserService } from './user.service';
 
-@Resolver(() => User)
+@Resolver((returns) => User)
 export class UserResolver {
   constructor(
     private userService: UserService,
     private postService: PostService,
   ) {}
 
-  @Query(() => [User])
+  @Query((returns) => [User])
   async users(): Promise<User[]> {
     return await this.userService.getUsers();
   }
 
-  @Query(() => User)
+  @Query((returns) => User)
   async user(@Args('id', { type: () => Int }) id: number) {
     return await this.userService.findOneById(id);
   }
 
   @ResolveField()
   async posts(@Parent() user: User): Promise<Post[]> {
-    console.log('getPosts');
     return await this.postService.findByUser(user);
   }
 }
