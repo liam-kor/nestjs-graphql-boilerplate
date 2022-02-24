@@ -1,7 +1,7 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Post } from '@src/modules/post/models/post.model';
+import { User } from '@src/modules/user/models/user.model';
 import { join } from 'path/posix';
-import { Post } from './modules/post/models/post.model';
-import { User } from './modules/user/models/user.model';
 
 const connectionOptions: TypeOrmModuleOptions = {
   type: 'mysql',

@@ -8,6 +8,7 @@ const mockPostRepository = () => ({
   save: jest.fn(),
   find: jest.fn(),
   findOne: jest.fn(),
+  create: jest.fn(),
   softDelete: jest.fn(),
 });
 
@@ -37,7 +38,23 @@ describe('PostService', () => {
   });
 
   describe('createPost', () => {
-    it.todo('should fail on validation exception');
-    it.todo('should create Post');
+    const createPostInput = {
+      title: '제목',
+      content: '내용',
+    };
+    it('should fail on exception', async () => {
+      postRepository.save.mockRejectedValue(new Error('database error'));
+      expect(service.createPost(createPostInput)).rejects.toThrow(
+        'database error',
+      );
+    });
+    it('should success create post', async () => {
+      const createdPost = {
+        id: 1,
+        ...createPostInput,
+      };
+      postRepository.save.mockResolvedValue(createdPost);
+      expect(await service.createPost(createPostInput)).toBe(createdPost);
+    });
   });
 });

@@ -13,7 +13,7 @@ import { UserModule } from './modules/user/user.module';
     ConfigModule.forRoot({
       envFilePath: '.env.dev',
     }),
-    TypeOrmModule.forRoot(require('./ormconfig')),
+    TypeOrmModule.forRoot(require('./database/ormconfig')),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
