@@ -1,5 +1,5 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
-import { Post } from 'src/modules/post/models/post.model';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Post } from '@src/modules/post/models/post.model';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

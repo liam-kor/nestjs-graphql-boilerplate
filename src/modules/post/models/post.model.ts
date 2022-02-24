@@ -1,6 +1,6 @@
-import { Field, ID, InputType, Int, ObjectType } from '@nestjs/graphql';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { User } from '@src/modules/user/models/user.model';
 import { IsNumber, IsString, MaxLength } from 'class-validator';
-import { User } from 'src/modules/user/models/user.model';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
